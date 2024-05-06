@@ -6,6 +6,7 @@ import instance from "@/utils/axiosInstance";
 type User = {
   email: string;
   isVerified: boolean;
+  avatar?: string;
 };
 
 type Status = {
@@ -21,6 +22,7 @@ const initialState: Auth = {
   user: {
     email: "",
     isVerified: false,
+    avatar: "",
   },
   status: {
     isLogin: false,
@@ -59,7 +61,11 @@ export const signIn = (params: IUsers) => async (dispatch: Dispatch) => {
     const payload = await parseJWT(data?.data);
 
     dispatch(
-      loginState({ email: payload?.email, isVerified: payload?.isVerified })
+      loginState({
+        email: payload?.email,
+        isVerified: payload?.isVerified,
+        avatar: payload?.avatar,
+      })
     );
     localStorage.setItem("token", String(data?.data));
   } catch (err) {
@@ -88,6 +94,7 @@ export const checkToken = (token: string) => async (dispatch: Dispatch) => {
       tokenValidState({
         email: payload?.email,
         isVerified: payload?.isVerified,
+        avatar: payload?.avatar,
       })
     );
     localStorage.setItem("token", String(data?.data));

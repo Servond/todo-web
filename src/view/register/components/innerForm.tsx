@@ -64,7 +64,7 @@ export default function InnerForm(props: FormikProps<FormValues>) {
             type="submit"
             disabled={isSubmitting}
           >
-            Login
+            Register
           </Button>
         </Stack>
       </Form>

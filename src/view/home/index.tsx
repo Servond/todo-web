@@ -21,6 +21,15 @@ const HomeView = () => {
           <Typography sx={{ textAlign: "start" }}>
             {status.isLogin ? `Welcome back ${user.email}` : ""}
           </Typography>
+          {user.avatar && status.isLogin && (
+            <Box>
+              <img
+                width="420px"
+                height="240px"
+                src={`${process.env.IMAGE_URL}/avatar/${user.avatar}`}
+              />
+            </Box>
+          )}
         </Box>
         <Box
           display="flex"
